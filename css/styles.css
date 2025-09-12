@@ -1,0 +1,130 @@
+/* FONTS */
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.subheading {
+  font-size: 24px;
+}
+
+
+
+/* MAIN */
+
+body {
+  margin: 20px;
+  font-family: "Crimson Text", serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header, main, footer {
+  width: 100%;
+  max-width: 700px;
+  padding: 0 2em;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 0;
+  border-bottom: 1px solid #eee;
+  background: #fdfdfd;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+/* INTRODUCTION */
+.intro-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* ensures good mobile behaviour */
+}
+
+.intro-text {
+  flex: 2;
+  min-width: 250px;
+}
+
+.profile-image img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 20px; /* optional: soften image corners */
+  flex-shrink: 0;
+}
+
+
+.logo {
+  font-size: 1.3em;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #666;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+.content {
+  padding: 2em 0;
+  max-width: 700px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.blog-preview {
+  margin-bottom: 2em;
+}
+
+.blog-preview h2 {
+  margin-bottom: 0.3em;
+}
+
+.blog-preview p {
+  margin: 0.2em 0;
+}
+
+footer {
+  text-align: center;
+  padding: 2em 0;
+  color: #aaa;
+  font-size: 0.9em;
+  border-top: 1px solid #eee;
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    margin-top: 0.5em;
+  }
+
+  nav a {
+    display: block;
+    margin: 0.2em 0;
+  }
+}
+
