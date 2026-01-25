@@ -1,0 +1,17 @@
+1. The Unreliability of LLMs
+	- Talk about how the initial structure of learning in the LLM leads to inaccuracy
+	- It's trained on the internet (famously not always correct)
+	- More and more blog posts, information spreading is created by LLMs off human prompts, setting up quick-quid sites
+	- This is leading LLM training to become more and more inaccurate based off previous creations of the LLM
+	- How can training the LLM be accurate and useful? Expert systems, translations
+	- Alternative sources for information finding (Wikipedia, Hank Green vid)
+
+	- Consider both formal competence (good) and getting the form of language right compared to functional competence (bad) and how it uses language to do things in the world - https://arxiv.org/pdf/2301.06627
+
+
+2. PRODUCT IDEA
+	- A laser pointer that's visible in screen recordings
+	- Would be incredibly useful for screen recordings
+	- Possibly connection via bluetooth for computer and when pointing at screen a pointer comes on screen
+	- Would have to calculate based on dimensions of projected screen and correlate that back to the original screen
+	-E.g. monitor coordinates of the laser pointer relative to the big screen and map it back to the original computer screen
