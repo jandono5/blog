@@ -127,3 +127,16 @@ footer {
   }
 }
 
+/* Blog Image Formatting */
+figure {
+  margin: 0.5rem 0; 
+}
+
+figure img {
+  width: 100%; 
+  height: auto; 
+}
+
+figcaption {
+  text-align: center; 
+}

@@ -1,9 +1,97 @@
 const blogPosts = [
    {
+    id: 3,
+    top: "<div id='top'></div>",
+    title: "Particle Swarm Optimisation",
+    summary: "How can a flock of birds teach us how to find optimal solutions?",
+    read_time: "Estimated Read Time: 5 minutes",
+    content: 
+    `
+	<p>Social behaviour has been observed in animals for centuries [1]. This interaction is beneficial for multiple reasons and is mainly believed to have evolved for survival purposes [2]. For example, birds moving in a flock mitigate predation risk and increase efficiency in foraging.</p>
+
+	<p>Designed in 1995 by James Kennedy and Russ Eberhart [3], Particle Swarm Optimisation (PSO) has been used extensively in a variety of search and optimisation problems. It's a metaheuristic algorithm that mimics social behaviour and builds on swarm intelligence, an AI paradigm where individuals co-operate locally to solve complex problems [4]. The operation of swarm intelligence is trivial: organisms can understand their environment better and faster by communicating to others about their own experiences. Within a multi-dimensional search space, co-existing subjects can iteratively infer their current state on other members and influence future movements. This has the potential to efficiently locate the minimum and maximum of all possible solutions in said search space.</p>
+
+	<h3>Implementation</h3>
+
+	<p>PSO is and always has been relatively simple to use. The paper introducing it even states that 'paradigms
+	can be implemented in a few lines of computer code', and that it is 'computationally inexpensive in terms
+	of both memory requirements and speed' [3].</p>
+
+	<h4>Prerequisites</h4>
+
+	<p>An individual particle is composed of three vectors and two fitness values:</p>
+
+	<p class='bold'>Vectors</p>
+	<ol>
+		<li><strong>x-vector</strong> - The current position of the particle in the search space</li>
+		<li><strong>v-vector</strong> - The velocity (direction and speed) the particle should travel in, if undisturbed</li>
+		<li><strong>p-vector</strong> - The location of the best solution found so far by that particle</li>
+	</ol>
+
+	<p><strong>Fitness Values</strong></p>
+	<ol>
+		<li><strong>x-fitness</strong> - Records fitness of the x-vector</li>
+		<li><strong>p-fitness</strong> - Records fitness of the p-vector</li>
+	</ol>
+
+	<p>All these components influence one another and continually update through each iteration of the algorithm. A particle \\(i\\) will move by adding its x-vector (\\(x_i\\)) to its v-vector (\\(v_i\\)). After moving, a new x-fitness value is taken. If this x-fitness is greater than all other p-fitness (\\(p_i\\)) values, this new location is saved as the current best for the particle in question.</p>
+
+	<p>However, when calculating a new direction (v-vector), the particle is influenced both by that particle's particular history (\\(p_i\\)) as well as the current best from the fellow swarm (\\(p_g\\)). These values can be multiplied by constants (\\(c_1 , c_2\\)) to give biases, influencing how much attention is paid to either self-learnt bests (cognitive) or to be wholly reliant on the group (social). Finally, random values (\\(r_1, r_2\\)) are used to introduce stochasticity to the particle’s movement, aiming to ensure that all areas of the search space are accounted for. Formulas for updating both the v-vector and x-vector for a particle are as follows:</p>
+
+	<p>\\[v_i \\leftarrow v_i + c_1 r_1 (p_i - x_i) + c_2 r_2 (p_g - x_i) \\\\ x_i \\leftarrow x_i + v_i\\]</p>
+
+	<p>When implementing PSO, we start by creating basic variables such as the number of particles present, the number of iterations for the PSO to learn through, setting the inertia value, and outlining cognitive and social biases. We then go on to placing these particles randomly throughout our search space and setting random directions for them to move in. It's then a case of managing the best locations, both personally and across the swarm. This involves lots of comparisons and updating values when necessary.</p>
+
+	<p>The code in its entirety, from PSO logic to visualisation can be viewed at <a href="https://github.com/jandono5/blog/blob/main/code/pso.py">this</a> link</p>
+
+	<h3>Algorithm Evaluation</h3>
+
+	<p>For simplicity's sake, I opted to evaluate this algorithm's performance on the commonly used <strong>Sphere Function</strong>. This function is defined as follows where input \\(X\\) is a vector of dimensions [5]:</p>
+
+	<p>\\[f(X) = \\sum^d_{i=1} x_i^2\\]</p>
+	
+	<p>Though there are an arbitrary number of objective functions we could use to test the performance of PSO, this one makes life simple in that it's easy to visualise and it's clear that the global minimum will reside around \\(0\\), no matter the amount of dimensions.</p>
+
+	<p>Using matplotlib's pyplot [6], we're able to visually assess how well this PSO algorithm does at locating the minimum of the sphere function across forty iterations (<strong>Figures 1 & 2</strong>).</p>
+
+	<figure>
+		<img src="img/pso/2DPSO.png" alt="2D Visualisation of PSO Across 40 Iterations" style="width:100%">
+		<figcaption><strong>Figure 1:</strong> 2D Visualisation of PSO Across 40 Iterations</figcaption>
+	</figure>
+	<figure>
+		<img src="img/pso/3DPSO.png" alt="3D Visualisation of PSO Across 40 Iterations" style="width:100%">
+		<figcaption><strong>Figure 2:</strong> 3D Visualisation of PSO Across 40 Iterations</figcaption>
+	</figure>
+
+	<h3>Results</h3>
+
+	<p>The sphere function was chosen due to its simplicity, as previously stated, but also because it completely eradicates the possibility of being stuck on local optima. This is an area that PSO algorithms are known to struggle with[7]. Though very efficient in some search and optimisation tasks, users should be wary that if social bias is set too high and the swarm's best location is not the global minimum / maximum, all other particles will converge, thus leaving the true 'best' choice unexplored and unaccounted for. An objective function that would hold more weight in demonstrating the true global optima of PSO should have an abundance of local optima, such as the Rastrigin function[8].</p>
+
+	   <p>However, with that said, we shouldn’t simply forget about PSO. The visualisations from the sphere function evaluation illustrates that it has the ability to learn through social communication, though it’s down to the human to understand the mechanisms behind it and what values are best for cognitive and social parameters. After all, its foundation and inspiration are the reason it can be so effective. Kennedy and Eberhart put it best when introducing PSO: <em>'Why is social behavior so ubiquitous in the animal kingdom? Because it optimizes. What is a good way to solve engineering optimization problems? Modeling social behavior'</em>.</p>
+
+	<h3>References</h3>
+
+	<ol>
+		<li>R. D. Alexander, “The evolution of social behavior,” Annual Review of Ecology and Systematics, vol. 5, pp. 325–383, 1974. [Online]. Available: <a href="https://www.jstor.org/stable/2096892" target="_blank">https://www.jstor.org/stable/2096892</a></li>
+		<li>J. K. Parrish and W. M. Hamner, Eds., Animal Groups in Three Dimensions. Cambridge and New York: Cambridge University Press, 1997.</li>
+		<li>J. Kennedy and R. Eberhart, “Particle swarm optimization,” in Proceedings of ICNN’95 - International Conference on Neural Networks, Perth, WA, Australia: IEEE, 1995.</li>
+		<li>J. Kennedy, “Swarm intelligence,” in Handbook of Nature-Inspired and Innovative Computing: Integrating Classical Models with Emerging Technologies, New York: Springer Science + Business Media, 2006, ch. 6.</li>
+		<li>Sphere Function — sfu.ca, <a href="https://www.sfu.ca/~ssurjano/spheref.html" target="_blank">https://www.sfu.ca/~ssurjano/spheref.html</a>, [Accessed 28-02-2026].</li>
+		<li>Pyplot Documentation — matplotlib.org, <a href="https://matplotlib.org/stable/api/pyplot_summary.html" target="_blank">https://matplotlib.org/stable/api/pyplot_summary.html</a>, [Accessed 03-03-2026].</li>
+		<li>M. Schmitt and R. Wanka, “Particle swarm optimization almost surely finds local optima,” Theoretical Computer Science, vol. 561, pp. 57–72, Jan. 2015. doi: <a href="https://doi.org/10.1016/j.tcs.2014.05.017" target="_blank">10.1016/j.tcs.2014.05.017</a>.</li>
+		<li>Rastrigin Function — en.wikipedia.org, <a href="https://en.wikipedia.org/wiki/Rastrigin_function" target="_blank">https://en.wikipedia.org/wiki/Rastrigin_function</a>, [Accessed 04-03-2026].</li>
+		<li>A. Tam, A Gentle Introduction to Particle Swarm Optimization — machinelearningmastery.com, <a href="https://machinelearningmastery.com/a-gentle-introduction-to-particle-swarm-optimization/" target="_blank">https://machinelearningmastery.com/a-gentle-introduction-to-particle-swarm-optimization/</a>, [Accessed 04-03-2026].</li>
+		<li>Implementation of Particle Swarm Optimization — geeksforgeeks.org, <a href="https://www.geeksforgeeks.org/machine-learning/implementation-of-particle-swarm-optimization/" target="_blank">https://www.geeksforgeeks.org/machine-learning/implementation-of-particle-swarm-optimization/</a>, [Accessed 04-03-2026].</li>
+	</ol>
+	
+	<p><a href="#top">Back to top</a></p>
+    `,
+    date: "May 20th, 2026"
+   },
+   {
     id: 2,
     top: "<div id='top'></div>",
     title: "Correctness and Reliability of LLMs",
-    image: "img/learning.jpg",
     summary: "As new LLMs are released, do they become less intelligent than before?",
     read_time: "Estimated Read Time: 8 minutes",
     content: 
@@ -66,7 +154,6 @@ const blogPosts = [
     id: 1,
     top: "<div id='top'></div>",
     title: "LLMs for Dummies",
-    image: "img/learning.jpg",
     summary: "Learning about the LLM from the ground up.",
     read_time: "Estimated Read Time: 10 minutes",
     content: 
