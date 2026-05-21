@@ -2,20 +2,20 @@ const blogPosts = [
    {
     id: 3,
     top: "<div id='top'></div>",
-    title: "Particle Swarm Optimisation",
+    title: "A Brief Overview of Particle Swarm Optimisation",
     summary: "How can a flock of birds teach us how to find optimal solutions?",
     read_time: "Estimated Read Time: 5 minutes",
     content: 
     `
-	<p>Social behaviour has been observed in animals for centuries [1]. This interaction is beneficial for multiple reasons and is mainly believed to have evolved for survival purposes [2]. For example, birds moving in a flock mitigate predation risk and increase efficiency in foraging.</p>
+	<p>Social behaviour has been observed in animals for centuries[1]. This interaction is beneficial for multiple reasons and is mainly believed to have evolved for survival purposes[2]. For example, birds moving in a flock mitigate predation risk and increase efficiency in foraging.</p>
 
-	<p>Designed in 1995 by James Kennedy and Russ Eberhart [3], Particle Swarm Optimisation (PSO) has been used extensively in a variety of search and optimisation problems. It's a metaheuristic algorithm that mimics social behaviour and builds on swarm intelligence, an AI paradigm where individuals co-operate locally to solve complex problems [4]. The operation of swarm intelligence is trivial: organisms can understand their environment better and faster by communicating to others about their own experiences. Within a multi-dimensional search space, co-existing subjects can iteratively infer their current state on other members and influence future movements. This has the potential to efficiently locate the minimum and maximum of all possible solutions in said search space.</p>
+	<p>Designed in 1995 by James Kennedy and Russ Eberhart[3], Particle Swarm Optimisation (PSO) has been used extensively in a variety of search and optimisation problems. It's a metaheuristic algorithm that mimics social behaviour and builds on swarm intelligence, an AI paradigm where individuals co-operate locally to solve complex problems[4]. The operation of swarm intelligence is trivial: organisms can understand their environment better and faster by communicating to others about their own experiences. Within a multi-dimensional search space, co-existing subjects can iteratively infer their current state on other members and influence future movements. This has the potential to efficiently locate the minimum and maximum of all possible solutions in said search space.</p>
 
 	<h3>Implementation</h3>
 
 	<p>PSO is and always has been relatively simple to use. The paper introducing it even states that 'paradigms
 	can be implemented in a few lines of computer code', and that it is 'computationally inexpensive in terms
-	of both memory requirements and speed' [3].</p>
+	of both memory requirements and speed'[3].</p>
 
 	<h4>Prerequisites</h4>
 
@@ -46,13 +46,13 @@ const blogPosts = [
 
 	<h3>Algorithm Evaluation</h3>
 
-	<p>For simplicity's sake, I opted to evaluate this algorithm's performance on the commonly used <strong>Sphere Function</strong>. This function is defined as follows where input \\(X\\) is a vector of dimensions [5]:</p>
+	<p>For simplicity's sake, I opted to evaluate this algorithm's performance on the commonly used <strong>Sphere Function</strong>. This function is defined as follows where input \\(X\\) is a vector of dimensions[5]:</p>
 
 	<p>\\[f(X) = \\sum^d_{i=1} x_i^2\\]</p>
 	
 	<p>Though there are an arbitrary number of objective functions we could use to test the performance of PSO, this one makes life simple in that it's easy to visualise and it's clear that the global minimum will reside around \\(0\\), no matter the amount of dimensions.</p>
 
-	<p>Using matplotlib's pyplot [6], we're able to visually assess how well this PSO algorithm does at locating the minimum of the sphere function across forty iterations (<strong>Figures 1 & 2</strong>).</p>
+	<p>Using matplotlib's pyplot[6], we're able to visually assess how well this PSO algorithm does at locating the minimum of the sphere function across forty iterations (<strong>Figures 1 & 2</strong>).</p>
 
 	<figure>
 		<img src="img/pso/2DPSO.png" alt="2D Visualisation of PSO Across 40 Iterations" style="width:100%">
