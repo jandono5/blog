@@ -1,4 +1,23 @@
 const blogPosts = [
+  {
+    id: 4,
+    top: "<div id='top'></div>",
+    title: "MemorAndo: Making Remote Care More Accessible",
+    summary: "A summary of my research in HCI at the University of Sussex.",
+    read_time: "Estimated Read Time: 3 minutes",
+    content:
+    `
+    <p>Over the summer, I was a Junior Research Associate at the University of Sussex under the supervision of Professor Kate Howland with funding from EPSRC.</p>
+    <p>Across eight weeks, I worked in <strong>Human-Computer Interaction (HCI)</strong>, specifically investigating the current use of technology to aid remote caregivers looking after people suffering from memory loss. At the end of this project, I created a new device coined the ‘MemorAndo’. Carers are able to upload messages to this device remotely, either using text-to-speech or by recording their own voice. </p>
+    <p>Though there isn’t one key statistic or figure presented from my research, what I did find is that there is a substantial lack of information for informal caregivers in the UK struggling to care for loved ones suffering from memory loss. With the combination of an ageing population and a cost-of-living crisis, I believe it’s more important than ever to develop and use technology to ease this problem.</p>
+    <p>A poster presenting my work can be seen along with this post. It’s intended for A1 print so apologies if parts of it are hard to make out!</p>
+    
+    <figure>
+		<img src="img/memorando/poster.png" alt="A poster summarising my research across eight weeks at the University of Sussex" style="width:100%">
+		<figcaption><strong>Figure 1:</strong> A summarisation of my two-month research project on HCI</figcaption>
+    </figure>
+    `,
+    date: "August 14th, 2026"},
    {
     id: 3,
     top: "<div id='top'></div>",
